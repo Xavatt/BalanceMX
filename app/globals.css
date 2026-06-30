@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Dark mode por clase .dark en <html>, controlado por ThemeProvider (no por prefers-color-scheme) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -10,13 +13,24 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Paleta exacta de los mockups — ver balancemx-colors-reference.md.
+     Valores fijos (no cambian entre light/dark); el rol de cada uno
+     (fondo, texto, borde) y las variantes de opacidad se aplican
+     por componente con clases dark: y el modificador /<alpha>. */
+  --color-ink: #0d3b46; /* primary / hero card / dark "primary-card" */
+  --color-teal-deep: #1f5f6a; /* text-secondary (light) / toggle activo bg (dark) */
+  --color-teal: #2e7d7a; /* accent-medium */
+  --color-teal-soft: #5faaa6; /* accent-light / text-secondary (dark) / text-muted (light) */
+  --color-teal-pale: #bfe7e2; /* surface-teal (light) / text-primary (dark) */
+  --color-mist: #f4fafa; /* bg-base / surface (light) */
+  --color-abyss: #061a1f; /* bg-base (dark) */
+  --color-deep: #0d2d35; /* surface-card / surface-input (dark) */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
